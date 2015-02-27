@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         feedScrollView.frame.size = view.bounds.size
         wedding1.frame = CGRect(x: 4, y: 191, width: 154, height: 154)
         
-            }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,7 +44,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIV   iewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
         isPresenting = true
         return self
     }
@@ -66,15 +66,18 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         
-        movingImageView = UIImageView(frame: selectedImageView.frame)
-        movingImageView.image = selectedImageView.image
-        movingImageView.contentMode = selectedImageView.contentMode
-        movingImageView.clipsToBounds = selectedImageView.clipsToBounds
-        
-        var window = UIApplication.sharedApplication().keyWindow!
-        window.addSubview(movingImageView)
-        
         if (isPresenting) {
+            
+            movingImageView = UIImageView(frame: selectedImageView.frame)
+            movingImageView.image = selectedImageView.image
+            movingImageView.contentMode = selectedImageView.contentMode
+            movingImageView.clipsToBounds = selectedImageView.clipsToBounds
+            
+            var window = UIApplication.sharedApplication().keyWindow!
+            window.addSubview(movingImageView)
+            
+            var photoViewContoller = toViewController as PhotoViewController
+            var finalImageView = photoViewContoller.zoomedInPhotoContainer
             
             blackView = UIView(frame: fromViewController.view.frame)
             blackView.backgroundColor = UIColor.blackColor()
@@ -85,9 +88,6 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
             
             toViewController.view.alpha = 0
             
-            var photoViewContoller = toViewController as PhotoViewController
-            var finalImageView = photoViewContoller.zoomedInPhotoContainer
-            
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 toViewController.view.alpha = 1
                 self.blackView.alpha = 1
@@ -97,16 +97,17 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
                     transitionContext.completeTransition(true)
             }
         } else {
+            
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 fromViewController.view.alpha = 0
                 self.blackView.alpha = 0
+                self.movingImageView.frame = self.selectedImageView.frame
                 
                 }) { (finished: Bool) -> Void in
                     
                     transitionContext.completeTransition(true)
-                    fromViewController.view.removeFromSuperview()
-//                    self.finalImageView.removeFromSuperview()
-//                    finalImageVe.view.removeFromSuperview()
+                    fromViewController.view.removeFromSuperview()   
+                    self.movingImageView.removeFromSuperview()
                     self.blackView.removeFromSuperview()
             }
         }
