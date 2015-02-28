@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uE1-fj-4Ih">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uE1-fj-4Ih">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -20,20 +20,12 @@
                                         <rect key="frame" x="0.0" y="109" width="320" height="1438"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding1" id="PI5-T4-qoB">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding1" id="PI5-T4-qoB">
                                         <rect key="frame" x="4" y="191" width="155" height="154"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="yag-oU-jhg" appends="YES" id="LMF-v4-zk1"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding2" id="36u-xQ-oa5">
-                                        <rect key="frame" x="4" y="349" width="155" height="157"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="2yv-BC-r9x" appends="YES" id="PpP-h5-Ie0"/>
                                         </connections>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding3" id="Ffl-DQ-8gK">
@@ -58,6 +50,14 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="b5N-ng-hLi" appends="YES" id="kfC-0W-S3a"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding2" id="36u-xQ-oa5">
+                                        <rect key="frame" x="4" y="349" width="155" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2yv-BC-r9x" appends="YES" id="PpP-h5-Ie0"/>
                                         </connections>
                                     </imageView>
                                 </subviews>
@@ -127,6 +127,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="photo_actions" id="ZM2-yV-ds1">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -143,6 +144,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="actionsBar" destination="ZM2-yV-ds1" id="vxs-tV-LYX"/>
+                        <outlet property="doneButton" destination="ZJR-CR-baF" id="Rhc-Ek-veC"/>
                         <outlet property="photoScrollView" destination="76a-fH-SxH" id="84G-ZC-fQx"/>
                         <outlet property="zoomedInPhotoContainer" destination="cL0-QL-Gtu" id="Gfp-Ns-eVw"/>
                     </connections>

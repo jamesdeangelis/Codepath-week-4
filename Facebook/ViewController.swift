@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
     
     var isPresenting: Bool = true
     var interactiveTransition: UIPercentDrivenInteractiveTransition!
+    
     var blackView: UIView!
     var selectedImageView: UIImageView!
     var aspectFill: UIImageView!
@@ -23,11 +24,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         feedScrollView.contentSize = homefeedView.frame.size
         feedScrollView.frame.size = view.bounds.size
-        wedding1.frame = CGRect(x: 4, y: 191, width: 154, height: 154)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,12 +39,14 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         var destinationVC = segue.destinationViewController as UIViewController
         destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
         destinationVC.transitioningDelegate = self
+        
         var destinationViewController = segue.destinationViewController as PhotoViewController
+        
         destinationViewController.fullSizeImage = selectedImageView.image
         
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIV   iewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
         isPresenting = true
         return self
     }
@@ -59,56 +61,86 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         return 0.4
     }
     
+//    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        interactiveTransition = UIPercentDrivenInteractiveTransition()
+//        
+//        //Setting the completion speed gets rid of a weird bounce effect bug when transitions complete
+//        interactiveTransition.completionSpeed = 0.99
+//        return interactiveTransition
+//    }
+
+    
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        println("animating transition")
         
         var containerView = transitionContext.containerView()
         var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        var frame = containerView.convertRect(selectedImageView.frame, fromView: feedScrollView)
         
         if (isPresenting) {
             
-            movingImageView = UIImageView(frame: selectedImageView.frame)
-            movingImageView.image = selectedImageView.image
+            var photoViewContoller = toViewController as PhotoViewController
+            var finalImageView = photoViewContoller.zoomedInPhotoContainer
+            var window = UIApplication.sharedApplication().keyWindow!
+            
+            //Hide the real deal while we're transitioning movingImageView
+            
+            selectedImageView.hidden = true
+            photoViewContoller.zoomedInPhotoContainer.hidden = true
+            
+            //Set movingImageView to copy all of the properties of the selectedImageView
+            
+            movingImageView = UIImageView(image: selectedImageView.image)
+            movingImageView.frame = frame
+            
             movingImageView.contentMode = selectedImageView.contentMode
             movingImageView.clipsToBounds = selectedImageView.clipsToBounds
             
-            var window = UIApplication.sharedApplication().keyWindow!
-            window.addSubview(movingImageView)
+            // Create our blackout view
+//            blackView = UIView(frame: fromViewController.view.frame)
+//            blackView.backgroundColor = UIColor.blackColor()
+//            blackView.alpha = 0
             
-            var photoViewContoller = toViewController as PhotoViewController
-            var finalImageView = photoViewContoller.zoomedInPhotoContainer
+            //Add the blackout to the photoViewController
+//            containerView.addSubview(blackView)
             
-            blackView = UIView(frame: fromViewController.view.frame)
-            blackView.backgroundColor = UIColor.blackColor()
-            blackView.alpha = 0
-            
-            containerView.addSubview(blackView)
             containerView.addSubview(toViewController.view)
             
-            toViewController.view.alpha = 0
+            //Finally add our new copy to the photoViewController
+            window.addSubview(movingImageView)
+            
+            photoViewContoller.view.alpha = 0
             
             UIView.animateWithDuration(0.4, animations: { () -> Void in
-                toViewController.view.alpha = 1
-                self.blackView.alpha = 1
+                
+                photoViewContoller.view.alpha = 1
                 self.movingImageView.frame = finalImageView.frame
+//                self.blackView.alpha = 1
                 
                 }) { (finished: Bool) -> Void in
+                    
                     transitionContext.completeTransition(true)
+                    self.movingImageView.hidden = true
+                    photoViewContoller.zoomedInPhotoContainer.hidden = false
             }
+            
+        // Define the dismiss transition
         } else {
             
             UIView.animateWithDuration(0.4, animations: { () -> Void in
+                self.movingImageView.hidden = false
                 fromViewController.view.alpha = 0
-                self.blackView.alpha = 0
-                self.movingImageView.frame = self.selectedImageView.frame
+                
+//                self.blackView.alpha = 0
+                self.movingImageView.frame = frame
                 
                 }) { (finished: Bool) -> Void in
                     
                     transitionContext.completeTransition(true)
                     fromViewController.view.removeFromSuperview()   
                     self.movingImageView.removeFromSuperview()
-                    self.blackView.removeFromSuperview()
+//                    self.blackView.removeFromSuperview()
+                    self.selectedImageView.hidden = false
             }
         }
     }

@@ -409,6 +409,7 @@
 				1AFC6B1D1A9FF48400E64B50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1AFC6B1E1A9FF48400E64B50 /* Build configuration list for PBXNativeTarget "FacebookTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				1AFC6B201A9FF48400E64B50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
