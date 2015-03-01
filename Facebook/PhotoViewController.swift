@@ -18,62 +18,46 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     var fullSizeImage: UIImage!
     var scrollMove: CGFloat!
     var scrollAlpha: CGFloat!
+    
+    var imageOriginalCenter: CGFloat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        photoScrollView.contentSize = CGSize(width: 320, height: 768)
-        
+        photoScrollView.contentSize = CGSize(width: 320, height: 678)
         zoomedInPhotoContainer.image = fullSizeImage
         
-        // Allow us to track scrolling
         photoScrollView.delegate = self
         
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        //hide the actions when scrolling begins
-        doneButton.hidden = true
-        actionsBar.hidden = true
-        
-        //capture the amount of scroll movement on the y-axis
         scrollMove = photoScrollView.contentOffset.y
-        
-        println("scroll move: \(scrollMove)")
-        
-        //If the scroll movement is positive (downwards) update the alpha of the scroll view
-        if (scrollMove > 0) {
-            scrollAlpha = photoScrollView.contentOffset.y / 100
-            photoScrollView.backgroundColor = UIColor(white: 0, alpha: 1 - scrollAlpha)
-            
-        //If the scroll movement is negative (upwards) update the alpha of the scroll view
-        } else if (scrollMove < 0) {
-            scrollAlpha = -photoScrollView.contentOffset.y / 100
-            photoScrollView.backgroundColor = UIColor(white: 0, alpha: 1 - scrollAlpha)
-        }
+        photoScrollView.backgroundColor = UIColor(white: 0, alpha: ((100-abs(scrollMove))/100))
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
-        
+        doneButton.hidden = true
+        actionsBar.hidden = true
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
-        // This method is called right as the user lifts their finger
-        
-        // Show the actions again
         doneButton.hidden = false
         actionsBar.hidden = false
         
         // If we scroll more than the 100 points, perform the dismiss action
-        if (photoScrollView.contentOffset.y > 100 || photoScrollView.contentOffset.y < -100) {
-            dismissViewControllerAnimated(true, completion: nil)
+        if (scrollMove > 100 || scrollMove < -100) {
+            dismissViewControllerAnimated(true, completion: nil)    
+        } else {
+            photoScrollView.contentOffset.y = 0
         }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-        // This method is called when the scrollview finally stops scrolling.
+        doneButton.hidden = false
+        actionsBar.hidden = false
     }
 
     override func didReceiveMemoryWarning() {

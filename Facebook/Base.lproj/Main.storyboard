@@ -28,6 +28,14 @@
                                             <outletCollection property="gestureRecognizers" destination="yag-oU-jhg" appends="YES" id="LMF-v4-zk1"/>
                                         </connections>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding2" id="36u-xQ-oa5">
+                                        <rect key="frame" x="4" y="349" width="155" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2yv-BC-r9x" appends="YES" id="PpP-h5-Ie0"/>
+                                        </connections>
+                                    </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding3" id="Ffl-DQ-8gK">
                                         <rect key="frame" x="163" y="191" width="153" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,14 +58,6 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="b5N-ng-hLi" appends="YES" id="kfC-0W-S3a"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding2" id="36u-xQ-oa5">
-                                        <rect key="frame" x="4" y="349" width="155" height="157"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="2yv-BC-r9x" appends="YES" id="PpP-h5-Ie0"/>
                                         </connections>
                                     </imageView>
                                 </subviews>
@@ -123,7 +123,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cL0-QL-Gtu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="47" width="320" height="479"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
