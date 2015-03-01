@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UIScrollViewDelegate {
+class PhotoViewController: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate {
     
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var zoomedInPhotoContainer: UIImageView!
@@ -25,16 +25,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         photoScrollView.contentSize = CGSize(width: 320, height: 678)
         zoomedInPhotoContainer.image = fullSizeImage
-        
         photoScrollView.delegate = self
-        
     }
+
     
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        scrollMove = photoScrollView.contentOffset.y
+        
+        scrollMove = abs(photoScrollView.contentOffset.y)
         photoScrollView.backgroundColor = UIColor(white: 0, alpha: ((100-abs(scrollMove))/100))
     }
     
@@ -44,20 +43,28 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
-        doneButton.hidden = false
-        actionsBar.hidden = false
+        println(scrollMove)
         
-        // If we scroll more than the 100 points, perform the dismiss action
-        if (scrollMove > 100 || scrollMove < -100) {
+        // If scroll more than the 100 points, perform the dismiss action
+        if (scrollMove > 75) {
             dismissViewControllerAnimated(true, completion: nil)    
         } else {
-            photoScrollView.contentOffset.y = 0
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: nil, animations: { () -> Void in
+                self.photoScrollView.contentOffset.y = 0
+                self.photoScrollView.backgroundColor = UIColor(white: 0, alpha: 1)
+                }, completion: nil)
         }
+        
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
         doneButton.hidden = false
         actionsBar.hidden = false
+        
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: nil, animations: { () -> Void in
+            self.photoScrollView.contentOffset.y = 0
+            self.photoScrollView.backgroundColor = UIColor(white: 0, alpha: 1)
+            }, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

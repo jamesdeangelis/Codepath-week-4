@@ -81,11 +81,19 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
             movingImageView.clipsToBounds = selectedImageView.clipsToBounds
             
             containerView.addSubview(toViewController.view)
+            
+            if selectedImageView.contentMode == UIViewContentMode.ScaleAspectFill {
+                movingImageView.contentMode = UIViewContentMode.ScaleAspectFill
+                photoViewContoller.zoomedInPhotoContainer.contentMode = UIViewContentMode.ScaleAspectFill
+            } else {
+                movingImageView.contentMode = UIViewContentMode.ScaleAspectFit
+                photoViewContoller.zoomedInPhotoContainer.contentMode = UIViewContentMode.ScaleAspectFit
+            }
+            
             window.addSubview(movingImageView)
             photoViewContoller.view.alpha = 0
             
             UIView.animateWithDuration(0.4, animations: { () -> Void in
-                
                 photoViewContoller.view.alpha = 1
                 self.movingImageView.frame = finalImageView.frame
                 
@@ -98,9 +106,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         // Define the dismiss transition
         } else {
             
-//            var photoViewContoller = toViewController as PhotoViewController
-            
             UIView.animateWithDuration(0.4, animations: { () -> Void in
+                
                 self.movingImageView.hidden = false
                 self.movingImageView.frame = frame
                 fromViewController.view.alpha = 0

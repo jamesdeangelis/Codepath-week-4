@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--News Feed-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Facebook" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" id="4kJ-e0-soA"/>
+                    <tabBarItem key="tabBarItem" title="News Feed" image="feed_tab" id="4kJ-e0-soA"/>
                     <connections>
                         <outlet property="feedScrollView" destination="jjc-Qh-BE7" id="80e-Yu-kKf"/>
                         <outlet property="homefeedView" destination="mTX-vZ-ZXy" id="o5N-Dn-wiU"/>
@@ -181,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="74" y="129"/>
         </scene>
-        <!--Item-->
+        <!--Messenger-->
         <scene sceneID="Uez-77-MXN">
             <objects>
                 <viewController id="HzE-MT-dbg" sceneMemberID="viewController">
@@ -190,13 +190,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="POa-pY-qhf"/>
+                    <tabBarItem key="tabBarItem" title="Messenger" image="messages_tab" id="POa-pY-qhf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwP-fd-MML" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="86" y="773"/>
         </scene>
-        <!--Item-->
+        <!--Notifications-->
         <scene sceneID="fWZ-az-9fs">
             <objects>
                 <viewController id="kda-OP-MiU" sceneMemberID="viewController">
@@ -205,13 +205,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="zIa-yN-QXD"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications_tab" id="zIa-yN-QXD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UD-K7-Cqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="773"/>
+            <point key="canvasLocation" x="469" y="828"/>
         </scene>
-        <!--Item-->
+        <!--More-->
         <scene sceneID="MFf-My-azX">
             <objects>
                 <viewController id="faH-Ls-u5l" sceneMemberID="viewController">
@@ -220,13 +220,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="iyy-gQ-Kxh"/>
+                    <tabBarItem key="tabBarItem" title="More" image="more_tab" id="iyy-gQ-Kxh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esN-93-3gi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="779"/>
+            <point key="canvasLocation" x="899" y="815"/>
         </scene>
-        <!--Item-->
+        <!--Requests-->
         <scene sceneID="lMh-qy-c1a">
             <objects>
                 <viewController id="mbF-6T-vNG" sceneMemberID="viewController">
@@ -235,7 +235,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="tNo-Sq-vbf"/>
+                    <tabBarItem key="tabBarItem" title="Requests" image="requests_tab" id="tNo-Sq-vbf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKv-B2-kEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,9 +245,14 @@
     <resources>
         <image name="compose" width="320" height="46"/>
         <image name="doneButton" width="51" height="27"/>
+        <image name="feed_tab" width="27" height="27"/>
         <image name="home_feed" width="320" height="1438"/>
+        <image name="messages_tab" width="27" height="27"/>
+        <image name="more_tab" width="27" height="27"/>
         <image name="nav" width="320" height="64"/>
+        <image name="notifications_tab" width="27" height="27"/>
         <image name="photo_actions" width="320" height="44"/>
+        <image name="requests_tab" width="27" height="27"/>
         <image name="wedding1" width="320" height="480"/>
         <image name="wedding2" width="480" height="320"/>
         <image name="wedding3" width="480" height="320"/>

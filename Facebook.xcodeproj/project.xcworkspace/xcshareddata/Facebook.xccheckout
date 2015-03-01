@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AC4DA29D-5F68-4B02-B7F5-B3E2FE1A4F53</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Facebook</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D100D8BA2E2EE63CB3C272EBD924DE4995BF2032</key>
+		<string>github.com:jamesdeangelis/Codepath-week-4.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Facebook.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D100D8BA2E2EE63CB3C272EBD924DE4995BF2032</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:jamesdeangelis/Codepath-week-4.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D100D8BA2E2EE63CB3C272EBD924DE4995BF2032</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D100D8BA2E2EE63CB3C272EBD924DE4995BF2032</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Facebook</string>
+		</dict>
+	</array>
+</dict>
+</plist>
